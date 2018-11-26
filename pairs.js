@@ -18,23 +18,25 @@
 *       pairs() returns []
 ****************************************************************/
 function shuffler(names) {
-  let randomizedArr = [];
-  while(names.length > 0) {
-    randomizedArr = names.splice(Math.floor(Math.random()*names.length),1);
-  }
-  return randomizedArr;
+	let randomizedArr = [];
+	for (let i = 0; i < names.length ; i++)
+	{
+		randomizedArr[i] = names.splice(Math.floor(Math.random()*names.length),1);
+
+	}
+	return randomizedArr;
 }
 function pairs(names) {
   if (names === undefined) {
     return [];
   }else if (names.length %2 !== 0) //odd 
 	{ let randomizedArr = shuffler(names);
-    let numOfPairs = ((names.length - 1) / 2 )+ 1;
+    let numOfPairs = ((randomizedArr.length - 1) / 2 )+ 1;
 		let pairedArr = [];
 		let counter = 0;
-		for (let i = 0; i < names.length; i = i +2) {
+		for (let i = 0; i < randomizedArr.length; i = i +2) {
 			
-				if (names[i+1] !== undefined) {
+				if (randomizedArr[i+1] !== undefined) {
 				pairedArr[counter] = [randomizedArr[i], randomizedArr [i+1]];
 				} else{
 					pairedArr[counter] = [randomizedArr[i]];
@@ -47,10 +49,10 @@ function pairs(names) {
 
 	} else if (names.length %2 === 0) {
     let randomizedArr = shuffler(names);
-		let numOfPairs = names.length /2 ;
+		let numOfPairs = randomizedArr.length /2 ;
 		let pairedArr = [];
 		let counter = 0;
-		for (let i = 0; i < names.length; i = i +2) {
+		for (let i = 0; i < randomizedArr.length; i = i +2) {
 				pairedArr[counter] = [randomizedArr[i], randomizedArr [i+1]];
 				counter = counter + 1;
 			}
